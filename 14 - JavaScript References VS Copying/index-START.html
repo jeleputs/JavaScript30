@@ -1,18 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>JS Reference VS Copy</title>
 </head>
+
 <body>
 
   <script>
     // start with strings, numbers and booleans
 
+    let name = 'ric';
+    let name2 = name;
+    console.log(name, name2);
+    name = 'ricardo';
+    console.log(name, name2);
+
+    //cuando nosotros asignamos primitivos, se pasan por valor.
+
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
+    const team = players;
+
+    //C, C++ &team = players;
+
+    console.log(team, players);
+
+    const team2 = players.slice();
+
+    const team6 = players.map(player => player);
+
+    const team3 = [].concat(players);
+
+    const team4 = [...players];
+
+    const team5 = Array.from(players);
 
     // You might think we can just do something like this:
 
@@ -39,8 +64,22 @@
     // with Objects
     const person = {
       name: 'Wes Bos',
-      age: 80
+      age: 80,
+      address: {
+        street: 'fake street',
+        number: 143
+      }
     };
+
+    console.clear();
+
+    //const person2 = Object.assign({}, person, { number: 99, age: 12 });
+    //console.log(person, person2);
+
+
+    const person3 = Object.assign({}, person);
+
+    console.log(person3);
 
     // and think we make a copy:
 
@@ -53,4 +92,5 @@
   </script>
 
 </body>
+
 </html>
